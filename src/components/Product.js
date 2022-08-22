@@ -18,7 +18,7 @@ function Product({ image, title, price, rating }) {
           <span>{utils.getPrice(price, 'decimal')}</span>
         </p>
       </div>
-      <button type="button">Add to basket</button>
+      <button type="button">Add to cart</button>
     </div>
   );
 }

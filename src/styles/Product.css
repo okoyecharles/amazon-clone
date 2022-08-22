@@ -59,8 +59,9 @@
   background: rgb(255,215,18);
   border: none;
   border-radius: 1em;
-  padding: .35em 3em;
-  box-shadow: 0 .1em .25em rgb(211, 211, 211);
+  padding: .35em 4em;
+  margin-inline: auto;
+  box-shadow: 0 .1em .25em rgb(235, 235, 235);
 }
 
 .product > button:hover {

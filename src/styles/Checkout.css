@@ -1,0 +1,24 @@
+.checkout {
+  display: flex;
+  padding: 1.25em;
+  gap: 1em;
+}
+
+.checkout > * {
+  background: white;
+}
+
+.checkout__left {
+  margin-top: 1em;
+}
+
+.checkout__ad {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+@media screen and (max-width: 50em) {
+  .checkout {
+    flex-direction: column;
+  }
+}

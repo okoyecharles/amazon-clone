@@ -60,6 +60,12 @@
   font-size: .8em;
 }
 
+.header__optionImg {
+  padding: .15em;
+  width: 2em;
+  object-fit: contain;
+}
+
 .header__optionTwo {
   font-size: .9em;
 }

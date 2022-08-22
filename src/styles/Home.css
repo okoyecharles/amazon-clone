@@ -10,6 +10,8 @@
   display: flex;
   gap: 1em;
   width: calc(100vw - 1em);
+  padding-top: 1em;
+  padding-bottom: 1em;
   margin-inline: .5em;
   margin-bottom: 1em;
 

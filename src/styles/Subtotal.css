@@ -1,0 +1,32 @@
+.subtotal {
+  margin: 1em;
+  min-width: 15em;
+}
+
+.subtotal__title > strong {
+  font-weight: 700;
+}
+
+.subtotal__gift {
+  font-size: .85rem;
+  display: flex;
+  align-items: center;
+  gap: .5em;
+  margin-bottom: 1em;
+}
+
+.subtotal__button {
+  font-size: .9em;
+  width: 100%;
+  margin: 0 .5em .5em .5em;
+  background: rgb(255,215,18);
+  border: none;
+  border-radius: .5em;
+  padding: .35em;
+  margin-inline: auto;
+  box-shadow: 0 .1em .25em rgb(235, 235, 235);
+}
+
+.subtotal__button:hover {
+  background: rgb(243, 206, 18);
+}
