@@ -1,0 +1,24 @@
+.home {
+  display: flex;
+  justify-content: center;
+
+  max-width: 100em;
+  margin-inline: auto;
+}
+
+.home__row {
+  display: flex;
+  gap: 1em;
+  width: calc(100vw - 1em);
+  margin-inline: .5em;
+  margin-bottom: 1em;
+
+  overflow-x: scroll;
+}
+
+.home__image {
+  width: 100%;
+  z-index: -1;
+  margin-bottom: -10em;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), 75%, rgba(0, 0, 0, 0));
+}

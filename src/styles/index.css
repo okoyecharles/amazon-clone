@@ -1,3 +1,8 @@
+/* Z-INDEX MAP */
+/**
+* .header : 100
+*/
+
 /* Box sizing rules */
 *,
 *::before,
@@ -24,6 +29,7 @@ html:focus-within {
 
 /* Set core body defaults */
 body {
+  background: rgb(234, 237, 237);
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
