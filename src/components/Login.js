@@ -4,7 +4,10 @@ import logo from "../images/amazon-logo-dark.png";
 import { Link, useNavigate } from "react-router-dom";
 
 import { auth } from "../config/firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 function Login() {
   const navigate = useNavigate();
@@ -16,14 +19,14 @@ function Login() {
 
     // Firebase Sign In Functionality
     signInWithEmailAndPassword(auth, email, password)
-    .then((auth) => {
-      // User Login Successful
-      if (auth) navigate('/');
-    })
-    .catch((err) => {
-      // User Login Unsuccessful
-      alert("The Password or Email is incorrect");
-    })
+      .then((auth) => {
+        // User Login Successful
+        if (auth) navigate("/");
+      })
+      .catch((err) => {
+        // User Login Unsuccessful
+        alert("The Password or Email is incorrect");
+      });
   };
 
   const register = (event) => {
@@ -31,14 +34,14 @@ function Login() {
 
     // Firebase Register Functionality
     createUserWithEmailAndPassword(auth, email, password)
-    .then((auth) => {
-      // User Creation Successful
-      if (auth) navigate('/');
-    })
-    .catch((err) => {
-      // User Creation Unsuccessful
-      alert(err.message);
-    })
+      .then((auth) => {
+        // User Creation Successful
+        if (auth) navigate("/");
+      })
+      .catch((err) => {
+        // User Creation Unsuccessful
+        alert(err.message);
+      });
   };
 
   return (
@@ -53,7 +56,13 @@ function Login() {
 
           <form>
             <label htmlFor="login__email">Email address</label>
-            <input type="email" name="email" id="login__email" value={email} onChange={e => setEmail(e.target.value)} />
+            <input
+              type="email"
+              name="email"
+              id="login__email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
 
             <label htmlFor="login__password">Password</label>
             <input
@@ -61,10 +70,14 @@ function Login() {
               name="password"
               id="login__password"
               value={password}
-              onChange={e => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
 
-            <button type="submit" className="login__signInButton" onClick={signIn}>
+            <button
+              type="submit"
+              className="login__signInButton"
+              onClick={signIn}
+            >
               Sign In
             </button>
           </form>
@@ -77,7 +90,11 @@ function Login() {
 
         <p>New to Amazon?</p>
 
-        <button type="button" className="login__registerButton" onClick={register}>
+        <button
+          type="button"
+          className="login__registerButton"
+          onClick={register}
+        >
           Create your Amazon account
         </button>
       </div>
