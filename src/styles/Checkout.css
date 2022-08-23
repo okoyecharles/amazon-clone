@@ -12,9 +12,37 @@
   margin-top: 1em;
 }
 
+.checkout__right {
+  height: fit-content;
+}
+
 .checkout__ad {
   width: 100%;
   margin-bottom: 1em;
+}
+
+.checkout__header {
+  margin: .5em 1em;
+  padding-bottom: 1em;
+  border-bottom: 0.05em solid #d3d3d3;
+}
+
+
+.checkout__header > button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: rgb(82,146,163);
+}
+
+.checkout__header > button:hover {
+  text-decoration: underline;
+  color: rgb(180, 120, 30);
+}
+
+.checkout__title {
+  font-size: 1.75em;
 }
 
 @media screen and (max-width: 50em) {
