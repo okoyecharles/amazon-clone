@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 
 function Subtotal() {
   const cart = useSelector(state => state.cart);
-  let price = cart.reduce((totalPrice, item) => totalPrice += parseFloat(item.price), 0);
   return (
     <div className="subtotal">
       <div className="subtotal__title">

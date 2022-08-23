@@ -1,0 +1,108 @@
+.login {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  flex-direction: column;
+  padding-inline: 1em;
+}
+
+.login__wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.login__logo {
+  object-fit: contain;
+  height: 4.75em;
+  margin: 0;
+}
+
+.login__container {
+  border: 0.05em solid #bcbcbc;
+  border-radius: .25em;
+  max-width: 21.5em;
+  padding: 0.75em 1.5em 1.5em;
+}
+
+.login__container > h2 {
+  font-size: 1.85em;
+  padding: 0;
+}
+
+.login__container > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login__container > form input {
+  padding: .25em .5em;
+  font-size: .85em;
+  margin-bottom: 1em;
+  border: 0.075em solid rgb(162, 162, 162);
+  border-radius: .15em;
+  background: #e7f0fe ;
+  outline: none;
+
+  transition: .25s ease;
+}
+
+.login__container > form input:focus {
+  border: 0.075em solid rgb(251,155,33);
+  box-shadow: 0 0 .25em .05em rgb(251,155,33);
+}
+
+.login__container > form label {
+  font-size: .85em;
+  font-weight: 700;
+}
+
+.login__container > p {
+  font-size: .85em;
+  margin-top: 1.5em;
+}
+
+.login__wrapper > p {
+  position: relative;
+  font-size: .85em;
+  margin-top: 1.5rem;
+  margin-bottom: .35rem;
+  text-align: center;
+  width: 100%;
+}
+
+.login__wrapper > p::after {
+  content: '';
+  left: 0;
+  top: -5%;
+  position: absolute;
+  width: 100%;
+  height: 0.05em;
+  background: #bcbcbc;
+}
+
+.login__wrapper > button {
+  width: 100%;
+  font-size: .9em;
+}
+
+.login__signInButton {
+  background: linear-gradient(#f6dd9e, #f0c24d);
+  border: 0.075em solid rgb(135, 135, 135);
+  border-radius: .1em;
+}
+
+.login__registerButton {
+  background: linear-gradient(rgb(249,249,251), rgb(233,234,237));
+  border: 0.075em solid rgb(135, 135, 135);
+  border-radius: .1em;
+}
+
+.login__signInButton:hover {
+  background: linear-gradient(#ffdd87, #e8b537);
+}
+
+.login__registerButton:hover {
+  background: linear-gradient(rgb(238, 237, 237), rgb(213, 214, 218));
+}

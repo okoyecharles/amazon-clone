@@ -31,15 +31,17 @@ function Header() {
           <span className="header__optionTwo header__optionImg"><img src={AmericaFlag} alt="English" /></span>
         </div>
 
-        <div className="header__option">
-          <span className="header__optionOne">Hello, Sign In</span>
-          <span className="header__optionTwo">Account & Lists</span>
-        </div>
+        <Link to="/login">
+          <div className="header__option">
+            <span className="header__optionOne">Hello, Sign In</span>
+            <span className="header__optionTwo">Account & Lists</span>
+          </div>
+        </Link>
 
-        <div className="header__option">
-          <span className="header__optionOne">Returns</span>
-          <span className="header__optionTwo">& Orders</span>
-        </div>
+          <div className="header__option">
+            <span className="header__optionOne">Returns</span>
+            <span className="header__optionTwo">& Orders</span>
+          </div>
 
         <Link to="/checkout">
           <div className="header__optionBasket">
