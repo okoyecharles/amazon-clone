@@ -5,10 +5,19 @@ import AmericaFlag from "../images/america-flag.png";
 import { Link } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { CgShoppingCart } from "react-icons/cg";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
+import { auth } from "../config/firebase";
 
 function Header() {
-  const cart = useSelector(state => state.cart);
+  const cart = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user);
+
+  const handleAuthentication = () => {
+    if (user) auth.signOut();
+  }
+
+  const getUserName = (email) => email.split('@')[0];
+  
   return (
     <div className="header">
       {/* Logo */}
@@ -28,20 +37,24 @@ function Header() {
       <nav className="header__nav">
         <div className="header__option">
           <span className="header__optionOne">English</span>
-          <span className="header__optionTwo header__optionImg"><img src={AmericaFlag} alt="English" /></span>
+          <span className="header__optionTwo header__optionImg">
+            <img src={AmericaFlag} alt="English" />
+          </span>
         </div>
 
-        <Link to="/login">
-          <div className="header__option">
-            <span className="header__optionOne">Hello, Sign In</span>
-            <span className="header__optionTwo">Account & Lists</span>
+        <Link to={!user && '/login'}>
+          <div className="header__option" onClick={handleAuthentication}>
+            <span className="header__optionOne">Hello, {user ? getUserName(user.email) : 'Guest'}</span>
+            <span className="header__optionTwo">
+              {user ? "Sign Out" : "Sign In"}
+            </span>
           </div>
         </Link>
 
-          <div className="header__option">
-            <span className="header__optionOne">Returns</span>
-            <span className="header__optionTwo">& Orders</span>
-          </div>
+        <div className="header__option">
+          <span className="header__optionOne">Returns</span>
+          <span className="header__optionTwo">& Orders</span>
+        </div>
 
         <Link to="/checkout">
           <div className="header__optionBasket">

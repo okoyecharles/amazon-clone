@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import "../styles/Login.css";
 import logo from "../images/amazon-logo-dark.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import { auth } from "../config/firebase";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -11,12 +15,30 @@ function Login() {
     event.preventDefault();
 
     // Firebase Sign In Functionality
+    signInWithEmailAndPassword(auth, email, password)
+    .then((auth) => {
+      // User Login Successful
+      if (auth) navigate('/');
+    })
+    .catch((err) => {
+      // User Login Unsuccessful
+      alert("The Password or Email is incorrect");
+    })
   };
 
   const register = (event) => {
     event.preventDefault();
 
     // Firebase Register Functionality
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((auth) => {
+      // User Creation Successful
+      if (auth) navigate('/');
+    })
+    .catch((err) => {
+      // User Creation Unsuccessful
+      alert(err.message);
+    })
   };
 
   return (

@@ -23,3 +23,12 @@ export const emptyCart = () => {
     type: actionType.EMPTY_CART,
   };
 };
+
+export const setUser = (user) => {
+  return {
+    type: actionType.SET_USER,
+    payload: {
+      user,
+    }
+  }
+}
