@@ -5,8 +5,10 @@ import AmericaFlag from "../images/america-flag.png";
 import { Link } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { CgShoppingCart } from "react-icons/cg";
+import { useSelector } from 'react-redux';
 
 function Header() {
+  const cart = useSelector(state => state.cart);
   return (
     <div className="header">
       {/* Logo */}
@@ -41,7 +43,7 @@ function Header() {
 
         <Link to="/checkout">
           <div className="header__optionBasket">
-            <span className="header__basketCount">0</span>
+            <span className="header__basketCount">{cart?.length}</span>
             <CgShoppingCart className="header__basket" />
           </div>
         </Link>
