@@ -25,3 +25,27 @@
 .payment__items, .payment__address, .payment__details {
   flex: 0.8;
 }
+
+.payment__priceContainer > div {
+  margin-bottom: 1em;
+}
+
+.payment__details > form > div > button {
+  width: fit-content;
+  margin: 0 .5em .5em .5em;
+  background: rgb(255,215,18);
+  border: none;
+  border-radius: .1em;
+  padding: .35em 4em;
+  margin-inline: auto;
+  box-shadow: 0 .1em .25em rgb(235, 235, 235);
+  color: #111;
+}
+
+.payment__details > form > div > button:disabled {
+  opacity: 0.496;
+}
+
+.payment__details > form > div > button:not(:disabled):hover {
+  background: rgb(243, 206, 18);
+}

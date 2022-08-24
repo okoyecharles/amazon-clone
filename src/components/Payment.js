@@ -2,13 +2,18 @@ import React, { useEffect, useState } from "react";
 import "../styles/Payment.css";
 import CheckoutProduct from "./CheckoutProduct";
 import * as utils from "../logic/utils";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useElements, useStripe, CardElement } from "@stripe/react-stripe-js";
-import axios from "axios";
+import axios from "../config/axios";
+import { emptyCart } from "../redux/actions";
+
+import { db } from "../config/firebase";
+import { setDoc, doc, collection } from "firebase/firestore";
 
 function Payment() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const user = useSelector((state) => state.user);
   const cart = useSelector((state) => state.cart);
@@ -26,36 +31,48 @@ function Payment() {
     const getClientSecret = async () => {
       const response = await axios({
         method: "post",
-        url: `/payments/create?total=${
-          cart.reduce(
-            (totalPrice, item) => (totalPrice += parseFloat(item.price)),
-            0
-          ) * 100
-        }`,
+        url: `/payments/create?total=${utils.getTotalPrice(cart) * 100}`,
+      }).catch(() => {
+        console.log("couldnt get secret");
       });
       setClientSecret(response.data.clientSecret);
     };
-
     getClientSecret();
   }, [cart]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setProcessing(true);
+    !error && setProcessing(true);
 
-    const payload = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: elements.getElement(CardElement),
-      },
-    }).then(({ paymentIntent }) => {
-      // paymentIntent = payment confirmation
+    const payload = await stripe
+      .confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
+      })
+      .then(({ paymentIntent }) => {
+        // paymentIntent = payment confirmation
 
-      setSucceeded(true);
-      setError(null);
-      setProcessing(false);
+        setDoc(
+          doc(
+            collection(doc(collection(db, "user"), user?.uid), "orders"),
+            paymentIntent.id
+          ),
+          {
+            cart,
+            amount: paymentIntent.amount,
+            created: paymentIntent.created,
+          }
+        );
 
-      navigate('/orders', { replace: true })
-    })
+        setSucceeded(true);
+        setError(null);
+        setProcessing(false);
+
+        dispatch(emptyCart());
+
+        navigate("/orders", { replace: true });
+      });
   };
 
   const handleChange = (event) => {
@@ -109,13 +126,7 @@ function Payment() {
                 <div>
                   Order Total :&nbsp;
                   <strong>
-                    {utils.formatter.format(
-                      cart.reduce(
-                        (totalPrice, item) =>
-                          (totalPrice += parseFloat(item.price)),
-                        0
-                      )
-                    )}
+                    {utils.formatter.format(utils.getTotalPrice(cart))}
                   </strong>
                 </div>
                 <button disabled={processing || disabled || succeeded}>

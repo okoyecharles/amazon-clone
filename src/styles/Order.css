@@ -1,0 +1,30 @@
+.order {
+  padding: 2em;
+  margin: 1em 0;
+  border: 0.05em solid #d3d3d3;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.order > h2 {
+  font-size: 1.25em;
+  font-weight: 500;
+}
+
+.order__id {
+  color: #777;
+}
+
+.order__total {
+  font-weight: 500;
+  color: rgb(180, 120, 30);
+}
+
+.order__id, .order__total {
+  align-self: flex-end;
+}
+
+.order .checkout__productButtons, .order .checkout__productGift {
+  display: none;
+}
