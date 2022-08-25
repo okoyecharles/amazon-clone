@@ -30,3 +30,8 @@
 .subtotal__button:hover {
   background: rgb(243, 206, 18);
 }
+
+.subtotal__error {
+  font-size: .8em;
+  color: rgb(255, 50, 0);
+}

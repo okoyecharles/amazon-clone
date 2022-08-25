@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Subtotal.css";
 import * as utils from "../logic/utils";
 import { useSelector } from "react-redux";
@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 function Subtotal() {
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user);
+
+  const [error, setError] = useState('');
 
   return (
     <div className="subtotal">
@@ -26,12 +29,21 @@ function Subtotal() {
         <span>This order contains a gift</span>
       </div>
       <button
-        onClick={() => navigate("/payment")}
+        onClick={() => {
+          if (!cart.length) {
+            setError('Cart is empty');
+            return;
+          }
+          user ? navigate("/payment") : setError('Please sign in first');
+        }}
         className="subtotal__button"
         type="button"
       >
         Proceed to checkout
       </button>
+      <div className="subtotal__error">
+        {error}
+      </div>
     </div>
   );
 }

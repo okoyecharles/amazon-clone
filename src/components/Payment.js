@@ -5,11 +5,9 @@ import * as utils from "../logic/utils";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useElements, useStripe, CardElement } from "@stripe/react-stripe-js";
-import axios from "../config/axios";
-import { emptyCart } from "../redux/actions";
-
-import { db } from "../config/firebase";
-import { setDoc, doc, collection } from "firebase/firestore";
+import { emptyCart, addOrder } from "../redux/actions";
+import { v4 } from "uuid";
+import moment from "moment";
 
 function Payment() {
   const navigate = useNavigate();
@@ -25,57 +23,31 @@ function Payment() {
   const [processing, setProcessing] = useState("");
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState(true);
 
-  useEffect(() => {
-    const getClientSecret = async () => {
-      const response = await axios({
-        method: "post",
-        url: `/payments/create?total=${utils.getTotalPrice(cart) * 100}`,
-      }).catch(() => {
-        console.log("couldnt get secret");
-      });
-      setClientSecret(response.data.clientSecret);
-    };
-    getClientSecret();
-  }, [cart]);
-
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     !error && setProcessing(true);
 
-    const payload = await stripe
-      .confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: elements.getElement(CardElement),
-        },
-      })
-      .then(({ paymentIntent }) => {
-        // paymentIntent = payment confirmation
+    const order = {
+      order_id: v4(),
+      amount: utils.formatter.format(utils.getTotalPrice(cart)),
+      created: moment().format("MMMM Do YYYY, h:mma"),
+      cart,
+    };
+    dispatch(addOrder(order));
 
-        setDoc(
-          doc(
-            collection(doc(collection(db, "user"), user?.uid), "orders"),
-            paymentIntent.id
-          ),
-          {
-            cart,
-            amount: paymentIntent.amount,
-            created: paymentIntent.created,
-          }
-        );
-
-        setSucceeded(true);
-        setError(null);
-        setProcessing(false);
-
-        dispatch(emptyCart());
-
-        navigate("/orders", { replace: true });
-      });
+    setTimeout(() => {
+      setProcessing("")
+      setSucceeded(true)
+      setDisabled(true)
+      dispatch(emptyCart());
+      
+      navigate('/orders');
+    }, 2000);
   };
 
   const handleChange = (event) => {
+    console.log(event);
     setDisabled(event.empty);
     setError(event.error ? event.error.message : "");
   };

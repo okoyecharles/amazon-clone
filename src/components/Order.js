@@ -5,15 +5,14 @@ import CheckoutProduct from "./CheckoutProduct";
 import * as utils from "../logic/utils";
 
 function Order({ order }) {
-  console.log(order.data.cart);
   return (
     <div className="order">
       <h2>Order</h2>
       <p className="order__id">
-        <small>{order.id}</small>
+        <small>{order.order_id}</small>
       </p>
-      <p>{moment.unix(order.data.created).format("MMMM Do YYYY, h:mma")}</p>
-      {order.data.cart?.map((item, index) => (
+      <p>{order.created}</p>
+      {order.cart?.map((item, index) => (
         <CheckoutProduct
           id={item.id}
           cartId={index}
@@ -25,7 +24,7 @@ function Order({ order }) {
       ))}
       <p className="order__total">
         Order Total:&nbsp;
-        {utils.formatter.format(order.data.amount / 100)}
+        {order.amount}
       </p>
     </div>
   );

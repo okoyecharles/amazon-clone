@@ -29,6 +29,15 @@ export const setUser = (user) => {
     type: actionType.SET_USER,
     payload: {
       user,
-    }
-  }
-}
+    },
+  };
+};
+
+export const addOrder = (order) => {
+  return {
+    type: actionType.ADD_ORDER,
+    payload: {
+      order
+    },
+  };
+};
