@@ -2,24 +2,36 @@
   display: flex;
   align-items: center;
   background: rgb(19,25,33);
+  font-size: 1.05em;
+  padding: .25em 1em;
 
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
+.header__logo:hover, .header__option:hover, .header__optionBasket:hover {
+  box-shadow: 0 0 0 .075em #ddd;
+}
+
+.header a {
+  text-decoration: none;
+}
+
 .header__search {
-  font-size: 1.25rem;
+  font-size: 1.25em;
   display: flex;
   align-items: center;
   flex: 1;
-  
-  background: red;
+  border-radius: .25em;
+  margin-right: .5em;
+  overflow: hidden;
 }
 
 .header__logo {
   height: 2.5em;
-  margin: 0 .5em;
+  padding-top: .25em;
+  margin-right: 1em;
 }
 
 .header__searchInput {
@@ -32,7 +44,7 @@
 
 .header__searchIcon {
   background: rgb(254,189,104);
-  padding: .25em;
+  padding: .255em;
   display: flex;
 }
 
@@ -51,13 +63,12 @@
   flex-direction: column;
   
   color: rgb(255, 255, 255);
-  
-  margin-inline: 1em;
-  padding: .25em;
+  padding: .25em 1em;
+  margin-inline: 0 .25em;
 }
 
 .header__optionOne {
-  font-size: .8em;
+  font-size: .7em;
 }
 
 .header__optionImg {
@@ -68,27 +79,56 @@
 
 .header__optionTwo {
   font-size: .9em;
+  font-weight: 700;
 }
 
 .header__optionBasket {
+  font-size: .9em;
+  display: flex;
+  align-items: flex-end;
+  padding: .5em;
+}
+.header__optionBasket > div {
+  position: relative;
+  font-size: .9em;
+}
+.header__optionBasketCount {
+  position: absolute;
+  transform: translateX(-40%);
+  left: 50%;
+  top: -15%;
+  font-size: 1.1em;
+  color: #f08806;
+}
+.header__optionBasket > span {
+  height: min-content;
+  color: white;
+}
+.header__basket {
+  width: 3em;
+  filter: invert(1);
+} 
+
+/* .header__optionBasket {
+  border: 1px solid red;
+}
+.header__optionBasket > div {
+  border: 1px solid blue;
   position: relative;
   display: flex;
-  flex-direction: column;
+  align-items: flex-end;
+}
+
+.header__optionBasket > span {
+  height: min-content;
   color: white;
 }
 
-
-.header__basketCount {
-  position: absolute;
-  transform: translate(-50%);
-  top: -5%;
-  left: 55%;
-  color: rgb(240,136,6);
-  font-size: 1.25em;
+.header__optionBasket > div > * {
+  border: 1px solid green;
 }
 
 .header__basket {
-  position: relative;
-  margin-top: .5em;
-  font-size: 2em;
-}
+  width: 2.5em;
+  filter: invert(1);
+} */

@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/Header.css";
 import logo from "../images/amazon-logo.png";
 import AmericaFlag from "../images/america-flag.png";
+import shoppingCart from "../images/cart.png";
 import { Link } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { CgShoppingCart } from "react-icons/cg";
@@ -14,10 +15,10 @@ function Header() {
 
   const handleAuthentication = () => {
     if (user) auth.signOut();
-  }
+  };
 
-  const getUserName = (email) => email.split('@')[0];
-  
+  const getUserName = (email) => email.split("@")[0];
+
   return (
     <div className="header">
       {/* Logo */}
@@ -42,26 +43,35 @@ function Header() {
           </span>
         </div>
 
-        <Link to={!user && '/login'}>
+        <Link to={!user && "/login"}>
           <div className="header__option" onClick={handleAuthentication}>
-            <span className="header__optionOne">Hello, {user ? getUserName(user.email) : 'Guest'}</span>
+            <span className="header__optionOne">
+              Hello, {user ? getUserName(user.email) : "Guest"}
+            </span>
             <span className="header__optionTwo">
               {user ? "Sign Out" : "Sign In"}
             </span>
           </div>
         </Link>
 
-        <Link to='/orders'>
-        <div className="header__option">
-          <span className="header__optionOne">Returns</span>
-          <span className="header__optionTwo">& Orders</span>
-        </div>
+        <Link to="/orders">
+          <div className="header__option">
+            <span className="header__optionOne">Returns</span>
+            <span className="header__optionTwo">& Orders</span>
+          </div>
         </Link>
 
         <Link to="/checkout">
           <div className="header__optionBasket">
-            <span className="header__basketCount">{cart?.length}</span>
-            <CgShoppingCart className="header__basket" />
+            <div>
+              <div className="header__optionBasketCount">{cart.length}</div>
+              <img
+                src={shoppingCart}
+                alt="shopping cart"
+                className="header__basket"
+              />
+            </div>
+            <span>Cart</span>
           </div>
         </Link>
       </nav>
