@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import background from "../images/home-bg.jpg";
 import "../styles/Home.css";
 import Product from "./Product";
@@ -14,6 +14,21 @@ import { useSelector } from "react-redux";
 
 function Home({ mediaWidth }) {
   const cart = useSelector((state) => state.cart);
+  const [alert, setAlert] = useState(null);
+  const [timeOutID, setTimeOutID] = useState(null);
+
+  useEffect(() => {
+    if (cart.length) {
+      setAlert("Item added to cart");
+      
+      if (timeOutID) clearTimeout(timeOutID);
+
+      const TID = setTimeout(() => {
+        setAlert(null);
+      }, 1000);
+      setTimeOutID(TID);
+    }
+  }, [cart]);
 
   return (
     <div className="home">
@@ -77,11 +92,15 @@ function Home({ mediaWidth }) {
           />
         </div>
       </div>
-      {mediaWidth > 840 && !!cart.length && (
-        <div className="home__checkout">
-          {cart?.map((item) => (
-            <img src={item.image} />
-          ))}
+      {mediaWidth > 840 && (
+        <div
+          className={
+            alert === "Item added to cart"
+              ? "home__alert active"
+              : "home__alert"
+          }
+        >
+          {alert}
         </div>
       )}
     </div>

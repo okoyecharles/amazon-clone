@@ -242,6 +242,7 @@
   .header {
     font-size: clamp(.7em, 4vw, 1em);
   }
+  
   .header__container, .header__mobileContainer {
     background: #222f3e;
   }

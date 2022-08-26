@@ -88,4 +88,12 @@
   .product__img {
     height: 10em;
   }
+
+  .product > button:hover {
+    background: rgb(255,215,18);
+  }
+
+  .product > button:active {
+    background: rgb(243, 206, 18);
+  }
 }
