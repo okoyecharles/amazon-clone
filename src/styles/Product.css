@@ -67,3 +67,25 @@
 .product > button:hover {
   background: rgb(243, 206, 18);
 }
+
+@media screen and (max-width: 840px) {
+  .product {
+    font-size: clamp(.55em, 3vw, .75em);
+    border-radius: .25em;
+    overflow: hidden;
+    box-shadow: 0 0 .25em rgb(181, 181, 181);
+  }
+
+  .product:first-child {margin-left: 1em;}
+  .product:last-child {margin-right: 1em;}
+
+  .product__title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .product__img {
+    height: 10em;
+  }
+}

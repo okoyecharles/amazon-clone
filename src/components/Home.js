@@ -10,8 +10,11 @@ import amazonecho from "../images/product-amazonecho.png";
 import ipadpro from "../images/product-ipadpro.png";
 import applewatch from "../images/product-applewatch.png";
 import samsungtv from "../images/product-samsungtv.png";
+import { useSelector } from "react-redux";
 
-function Home() {
+function Home({ mediaWidth }) {
+  const cart = useSelector((state) => state.cart);
+
   return (
     <div className="home">
       <div className="home__container">
@@ -74,6 +77,13 @@ function Home() {
           />
         </div>
       </div>
+      {mediaWidth > 840 && !!cart.length && (
+        <div className="home__checkout">
+          {cart?.map((item) => (
+            <img src={item.image} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

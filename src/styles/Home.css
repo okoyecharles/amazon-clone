@@ -24,3 +24,23 @@
   margin-bottom: -15em;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), 75%, rgba(0, 0, 0, 0));
 }
+
+@media screen and (max-width: 840px) {
+  
+  .home__container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .home__image {
+    margin-bottom: -20px;
+  }
+
+  .home__row {
+    gap: .5em;
+    background: white;
+    margin-inline: 0;
+    min-width: 100%;
+    margin-bottom: .5em;
+  }
+}

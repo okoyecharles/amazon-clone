@@ -11,18 +11,13 @@ import { TbMenu2 } from "react-icons/tb";
 import { useSelector } from "react-redux";
 import { auth } from "../config/firebase";
 
-function Header() {
+function Header({ mediaWidth }) {
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user);
 
   const navigate = useNavigate();
 
-  const [mobileNav, setMobileNav] = useState(true);
-  const [mediaWidth, setMediaWidth] = useState(null);
-  useEffect(() => setMediaWidth(window.innerWidth), []);
-  window.addEventListener("resize", (event) =>
-    setMediaWidth(event.target.innerWidth)
-  );
+  const [mobileNav, setMobileNav] = useState(false);
 
   const handleAuthentication = () => {
     setMobileNav((prevState) => !prevState);
@@ -126,7 +121,11 @@ function Header() {
         )}
       </div>
       {mediaWidth <= 840 && (
-        <div className={mobileNav ? "header__mobileNav active" : "header__mobileNav"}>
+        <div
+          className={
+            mobileNav ? "header__mobileNav active" : "header__mobileNav"
+          }
+        >
           <div
             className={
               mobileNav

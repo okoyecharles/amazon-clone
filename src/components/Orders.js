@@ -11,7 +11,6 @@ function Orders() {
   useEffect(() => {
     if (user) {
       setOrders(userInfo.orders)
-      console.log('Current User Info State: ', orders);
     } else {
       setOrders([])
     }

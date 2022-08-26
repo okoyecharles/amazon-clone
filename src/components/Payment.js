@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../styles/Payment.css";
 import CheckoutProduct from "./CheckoutProduct";
 import * as utils from "../logic/utils";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { useElements, useStripe, CardElement } from "@stripe/react-stripe-js";
+import { CardElement } from "@stripe/react-stripe-js";
 import { emptyCart, addOrder } from "../redux/actions";
 import { v4 } from "uuid";
 import moment from "moment";
@@ -15,9 +15,6 @@ function Payment() {
 
   const user = useSelector((state) => state.user);
   const cart = useSelector((state) => state.cart);
-
-  const stripe = useStripe();
-  const elements = useElements();
 
   const [succeeded, setSucceeded] = useState(false);
   const [processing, setProcessing] = useState("");

@@ -3,7 +3,7 @@ import Home from "./Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Checkout from "./Checkout";
 import Login from "./Login";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { auth } from "../config/firebase";
@@ -20,6 +20,13 @@ const promise = loadStripe(
 
 function App() {
   const dispatch = useDispatch();
+
+  // Detect size of screen
+  const [mediaWidth, setMediaWidth] = useState(null);
+  useEffect(() => setMediaWidth(window.innerWidth), []);
+  window.addEventListener("resize", (event) =>
+    setMediaWidth(event.target.innerWidth)
+  );
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -40,8 +47,8 @@ function App() {
             path="/"
             element={
               <>
-                <Header />
-                <Home />
+                <Header mediaWidth={mediaWidth}/>
+                <Home mediaWidth={mediaWidth}/>
               </>
             }
           />
@@ -49,7 +56,7 @@ function App() {
             path="/orders"
             element={
               <>
-                <Header />
+                <Header mediaWidth={mediaWidth}/>
                 <Orders />
               </>
             }
@@ -59,7 +66,7 @@ function App() {
             path="/checkout"
             element={
               <>
-                <Header />
+                <Header mediaWidth={mediaWidth}/>
                 <Checkout />
               </>
             }
@@ -68,7 +75,7 @@ function App() {
             path="/payment"
             element={
               <>
-                <Header />
+                <Header mediaWidth={mediaWidth}/>
                 <Elements stripe={promise}>
                   <Payment />
                 </Elements>

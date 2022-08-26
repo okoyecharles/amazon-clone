@@ -1,8 +1,6 @@
 import React from "react";
 import "../styles/Order.css";
-import moment from "moment";
 import CheckoutProduct from "./CheckoutProduct";
-import * as utils from "../logic/utils";
 
 function Order({ order }) {
   return (
