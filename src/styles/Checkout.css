@@ -45,8 +45,13 @@
   font-size: 1.75em;
 }
 
-@media screen and (max-width: 50em) {
+@media screen and (max-width: 840px) {
+  .checkout__right {
+    position: sticky;
+    top: -4em;
+    box-shadow: 0 0 .5em rgba(0, 0, 0, 0.16);
+  }
   .checkout {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 }

@@ -66,3 +66,32 @@
 .checkout__productButtons > button:not(:last-child) {
   border-right: .05em solid gray;
 }
+
+@media screen and (max-width: 840px) {
+  .checkout__product {
+    font-size: .8em;
+    flex-direction: column;
+  }
+
+  .checkout__productImg {
+    width: 100%;
+  }
+
+  .checkout__productTitlePrice {
+    flex-direction: column;
+  }
+
+  .checkout__productTitle {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .checkout__productGift {
+    display: flex;
+  }
+
+  .checkout__productGift a {
+    margin-left: auto;
+  }
+}

@@ -87,10 +87,10 @@ function Header({ mediaWidth }) {
           )}
 
           {mediaWidth <= 840 && (
-            <div className="header__mobileUser">
+            <div className="header__mobileUser" onClick={() => !user && navigate('/login')}>
               <MdPersonOutline className="header__mobileUserIcon" />
               <span className="header__mobileUserName">
-                {user ? getUserName(user.email) : "Guest"} &gt;
+                {user ? getUserName(user.email) : "Guest"}
               </span>
             </div>
           )}

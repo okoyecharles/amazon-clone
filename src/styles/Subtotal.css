@@ -1,6 +1,8 @@
 .subtotal {
   margin: 1em;
   min-width: 15em;
+  display: flex;
+  flex-direction: column;
 }
 
 .subtotal__title > strong {
@@ -33,5 +35,10 @@
 
 .subtotal__error {
   font-size: .8em;
-  color: rgb(255, 50, 0);
+  color: rgb(255, 114, 21);
+}
+
+@media screen and (max-width: 840px) {
+  .subtotal__button:active {background: rgb(243, 206, 18);}
+  .subtotal__button:hover {background : rgb(255,215,18);}
 }
