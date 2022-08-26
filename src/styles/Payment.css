@@ -49,3 +49,14 @@
 .payment__details > form > div > button:not(:disabled):hover {
   background: rgb(243, 206, 18);
 }
+
+@media screen and (max-width: 840px) {
+  .payment__section {
+    flex-direction: column;
+  }
+
+  .payment__title {
+    font-size: 1.5em;
+    border-bottom: 0.05em solid #d3d3d3;
+  }
+}

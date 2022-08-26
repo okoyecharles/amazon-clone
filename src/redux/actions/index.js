@@ -41,3 +41,18 @@ export const addOrder = (order) => {
     },
   };
 };
+
+export const updateUserOrders = (orders) => {
+  return {
+    type: actionType.UPDATE_USER_ORDERS,
+    payload: {
+      orders
+    },
+  }
+}
+
+export const deleteUserOrders = () => {
+  return {
+    type: actionType.DELETE_USER_ORDERS,
+  }
+}

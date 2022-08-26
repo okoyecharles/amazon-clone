@@ -7,6 +7,10 @@ const userInfo = (state = initialState, action) => {
       return !state.orders
         ? { ...state, orders: [action.payload.order] }
         : { ...state, orders: [action.payload.order, ...state.orders] };
+    case actionType.UPDATE_USER_ORDERS:
+      return { ...state, orders: action.payload.orders };
+    case actionType.DELETE_USER_ORDERS:
+      return { ...state, orders: [] };
     default:
       return state;
   }

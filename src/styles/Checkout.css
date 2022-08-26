@@ -54,4 +54,7 @@
   .checkout {
     flex-direction: column-reverse;
   }
+  .checkout__title {
+    font-size: 1.5em;
+  }
 }

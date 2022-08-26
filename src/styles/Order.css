@@ -28,3 +28,11 @@
 .order .checkout__productButtons, .order .checkout__productGift {
   display: none;
 }
+
+@media screen and (max-width: 840px) {
+  .order__id {
+    color: #777;
+    font-size: .5em;
+    align-self: flex-start;
+  }
+}

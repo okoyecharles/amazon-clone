@@ -16,7 +16,6 @@
   padding-bottom: 1em;
   margin-inline: .5em;
   margin-bottom: 1em;
-
   overflow-x: scroll;
 }
 
@@ -57,7 +56,7 @@
     width: 100%;
   }
   .home__image {
-    margin-bottom: -20px;
+    margin-bottom: -6em;
   }
 
   .home__row {
@@ -66,5 +65,11 @@
     margin-inline: 0;
     min-width: 100%;
     margin-bottom: .5em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .home__image {
+    margin-bottom: -3.5em;
   }
 }

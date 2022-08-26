@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import background from "../images/home-bg.jpg";
+import background2 from "../images/home-bg-2.jpg";
 import "../styles/Home.css";
 import Product from "./Product";
 
@@ -33,7 +34,7 @@ function Home({ mediaWidth }) {
   return (
     <div className="home">
       <div className="home__container">
-        <img src={background} alt="home-background" className="home__image" />
+        <img src={mediaWidth > 840 ? background : background2} alt="home-background" className="home__image" />
 
         <div className="home__row">
           <Product
