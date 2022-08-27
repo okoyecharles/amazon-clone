@@ -23,6 +23,10 @@ function Payment() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!cart.length) {
+      navigate('/orders', {replace: true});
+      return;
+    }
     !error && setProcessing(true);
 
     const order = {
@@ -39,12 +43,11 @@ function Payment() {
       setDisabled(true)
       dispatch(emptyCart());
       
-      navigate('/orders');
-    }, 2000);
+      navigate('/orders', {replace: true});
+    }, 1000);
   };
 
   const handleChange = (event) => {
-    console.log(event);
     setDisabled(event.empty);
     setError(event.error ? event.error.message : "");
   };
@@ -52,7 +55,7 @@ function Payment() {
   return (
     <div className="payment">
       <div className="payment__container">
-        <h1>Checkout {<Link to="/checkout">{cart?.length} items</Link>}</h1>
+        <h1>Checkout {<Link to="/checkout">{!cart.length ? 'empty' : `${cart.length} ${cart.length === 1 ? 'item' : 'items'}` }</Link>}</h1>
 
         <div className="payment__section">
           <div className="payment__title">

@@ -13,8 +13,21 @@ function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const [processing, setProcessing] = useState(false);
+
+  const getError = (firebaseErr) => {
+    if (firebaseErr.includes("Firebase: Error (auth/")) {
+      return firebaseErr
+        .replace("Firebase: Error (auth/", "")
+      .replace(").", "")
+        .split("-")
+        .join(" ")
+    }
+  };
 
   const signIn = (event) => {
+    setProcessing(true)
     event.preventDefault();
 
     // Firebase Sign In Functionality
@@ -25,7 +38,8 @@ function Login() {
       })
       .catch((err) => {
         // User Login Unsuccessful
-        alert("The Password or Email is incorrect");
+        setProcessing(false)
+        setError(getError(err.message));
       });
   };
 
@@ -40,7 +54,8 @@ function Login() {
       })
       .catch((err) => {
         // User Creation Unsuccessful
-        alert(err.message);
+        setProcessing(false)
+        setError(getError(err.message));
       });
   };
 
@@ -55,13 +70,18 @@ function Login() {
           <h2>Sign In</h2>
 
           <form>
+            {!!error && (<p className="login__error">{error}</p>)}
+
             <label htmlFor="login__email">Email address</label>
             <input
               type="email"
               name="email"
               id="login__email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setError(null)
+                setEmail(e.target.value)
+              }}
             />
 
             <label htmlFor="login__password">Password</label>
@@ -70,13 +90,17 @@ function Login() {
               name="password"
               id="login__password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setError(null)
+                setPassword(e.target.value)
+              }}
             />
 
             <button
               type="submit"
               className="login__signInButton"
               onClick={signIn}
+              disabled={processing}
             >
               Sign In
             </button>
@@ -94,6 +118,7 @@ function Login() {
           type="button"
           className="login__registerButton"
           onClick={register}
+          disabled={processing}
         >
           Create your Amazon account
         </button>

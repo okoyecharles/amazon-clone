@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../styles/Header.css";
 import logo from "../images/amazon-logo.png";
 import AmericaFlag from "../images/america-flag.png";

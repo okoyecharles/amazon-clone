@@ -106,3 +106,17 @@
 .login__registerButton:hover {
   background: linear-gradient(rgb(238, 237, 237), rgb(213, 214, 218));
 }
+
+.login button.active {
+  opacity: .5;
+}
+
+.login__error {
+  font-size: .8em;
+  color: rgb(255, 114, 21);
+  margin-left: auto;
+}
+
+.login__error::first-letter {
+  text-transform: uppercase;
+}

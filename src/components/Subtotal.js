@@ -14,7 +14,7 @@ function Subtotal() {
   return (
     <div className="subtotal">
       <div className="subtotal__title">
-        Subtotal ({cart.length} items):&nbsp;
+        Subtotal ({!cart.length ? 'empty' : `${cart.length} ${cart.length === 1 ? 'item' : 'items'}` }):&nbsp;
         <strong>
           {utils.formatter.format(
             cart.reduce(
