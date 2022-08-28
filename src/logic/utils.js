@@ -42,3 +42,13 @@ export const formatter = new Intl.NumberFormat("en-US", {
 
 export const getTotalPrice = (cart) =>
   cart.reduce((totalPrice, item) => (totalPrice += parseFloat(item.price)), 0);
+
+export const getError = (firebaseErr) => {
+  if (firebaseErr.includes("Firebase: Error (auth/")) {
+    return firebaseErr
+      .replace("Firebase: Error (auth/", "")
+      .replace(").", "")
+      .split("-")
+      .join(" ");
+  }
+};

@@ -4,6 +4,8 @@
   background-color: white;
   flex-direction: column;
   padding-inline: 1em;
+  
+  
 }
 
 .login__wrapper {
@@ -11,6 +13,17 @@
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
+
+
+  opacity: 0.5;
+  transform: translateY(2em);
+
+  transition: transform .3s ease, opacity .25s ease-in;
+}
+
+.login__wrapper.active {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .login__logo {
@@ -82,29 +95,32 @@
   background: #bcbcbc;
 }
 
-.login__wrapper > button {
-  width: 100%;
-  font-size: .9em;
+.login__wrapper > p a {
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0;
+  color: rgb(82,146,163);
+}
+
+.login__wrapper > p a:hover {
+  text-decoration: underline;
+  color: rgb(180, 120, 30);
 }
 
 .login__signInButton {
   background: linear-gradient(#f6dd9e, #f0c24d);
   border: 0.075em solid rgb(135, 135, 135);
   border-radius: .1em;
+  cursor: pointer;
 }
 
-.login__registerButton {
-  background: linear-gradient(rgb(249,249,251), rgb(233,234,237));
-  border: 0.075em solid rgb(135, 135, 135);
-  border-radius: .1em;
+.login__signInButton:disabled {
+  color: black;
+  opacity: .7;
 }
 
 .login__signInButton:hover {
   background: linear-gradient(#ffdd87, #e8b537);
-}
-
-.login__registerButton:hover {
-  background: linear-gradient(rgb(238, 237, 237), rgb(213, 214, 218));
 }
 
 .login button.active {
@@ -119,4 +135,17 @@
 
 .login__error::first-letter {
   text-transform: uppercase;
+}
+
+.checkout__header > button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: rgb(82,146,163);
+}
+
+.checkout__header > button:hover {
+  text-decoration: underline;
+  color: rgb(180, 120, 30);
 }

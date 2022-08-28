@@ -13,6 +13,7 @@ import Payment from "./Payment";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import Orders from "./Orders";
+import SignUp from "./SignUp";
 
 const promise = loadStripe(
   "pk_test_51LKikxJIr5sMtV8TVVCP3FSBVbFYb87a2Al30jAkasBgTDe61U02aRDd5ZJKT68wknB9Woa8ZNReOfSBs1Q3Ip6g00TdXWcbbN"
@@ -38,7 +39,7 @@ function App() {
         dispatch(setUser(null));
       }
     });
-  }, []);
+  });
   return (
     <Router>
       <div className="App">
@@ -62,6 +63,7 @@ function App() {
             }
           />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route
             path="/checkout"
             element={

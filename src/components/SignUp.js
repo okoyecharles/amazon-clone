@@ -4,10 +4,12 @@ import logo from "../images/amazon-logo-dark.png";
 import { Link, useNavigate } from "react-router-dom";
 
 import { auth } from "../config/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 import { getError } from "../logic/utils";
 
-function Login() {
+function SignUp() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,18 +19,18 @@ function Login() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  const signIn = (event) => {
-    setProcessing(true);
+  const register = (event) => {
     event.preventDefault();
+    setProcessing(true);
 
-    // Firebase Sign In Functionality
-    signInWithEmailAndPassword(auth, email, password)
+    // Firebase Register Functionality
+    createUserWithEmailAndPassword(auth, email, password)
       .then((auth) => {
-        // User Login Successful
+        // User Creation Successful
         if (auth) navigate("/");
       })
       .catch((err) => {
-        // User Login Unsuccessful
+        // User Creation Unsuccessful
         setProcessing(false);
         setError(getError(err.message));
       });
@@ -42,7 +44,7 @@ function Login() {
         </Link>
 
         <div className="login__container">
-          <h2>Sign In</h2>
+          <h2>Sign Up</h2>
 
           <form>
             {!!error && <p className="login__error">{error}</p>}
@@ -74,10 +76,10 @@ function Login() {
             <button
               type="submit"
               className="login__signInButton"
-              onClick={signIn}
+              onClick={register}
               disabled={processing}
             >
-              Sign In
+              Create Account
             </button>
           </form>
 
@@ -88,11 +90,11 @@ function Login() {
         </div>
 
         <p>
-          New to Amazon Clone? <Link to="/signup">Create an account</Link>
+          Already on Amazon Clone? <Link to="/login">Sign In</Link>
         </p>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default SignUp;
