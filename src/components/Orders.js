@@ -47,7 +47,8 @@ function Orders() {
       <h1>Your Orders</h1>
 
       <div className="orders__order">
-        {!orders && "Currently no orders"}
+        {!user && "Sign In to see your orders"}
+        {user && !extStoreOrders.length && "Currently no orders"}
         {extStoreOrders?.map((order) => (
           <Order order={order} key={order.id} />
         ))}
