@@ -2,6 +2,7 @@
   display: flex;
   padding: 1.25em;
   gap: 1em;
+  min-height: 90vh;
 }
 
 .checkout > * {
@@ -53,6 +54,10 @@
   }
   .checkout {
     flex-direction: column-reverse;
+  }
+
+  .checkout__left {
+    margin-bottom: auto;
   }
   .checkout__title {
     font-size: 1.5em;

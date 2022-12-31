@@ -1,5 +1,6 @@
 .payment {
   background-color: #fff;
+  min-height: 90vh;
 }
 
 .payment__container > h1 {

@@ -54,6 +54,28 @@ picture {
   display: block;
 }
 
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(19,25,33);
+  font-weight: 300;
+  padding: 2rem;
+  color: #fff;
+}
+
+footer a {
+  color: #ffa41c;
+  padding-left: 1ch;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 840px) {
+  footer {
+    background-color: #222f3e;
+  }
+}
+
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
