@@ -12,8 +12,9 @@ function Order({ order }) {
       <p>{order.created}</p>
       {order.cart?.map((item, index) => (
         <CheckoutProduct
+          key={item.index}
           id={item.id}
-          cartId={index}
+          index={index}
           title={item.title}
           image={item.image}
           price={item.price}

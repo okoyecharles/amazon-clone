@@ -91,3 +91,18 @@ footer a {
     scroll-behavior: auto !important;
   }
 }
+
+/* media query classes */
+.mobile-hidden {
+  display: none;
+}
+
+@media screen and (min-width: 840px) {
+  .mobile-hidden {
+    display: inherit;
+  }
+
+  .desktop-hidden {
+    display: none;
+  }
+}

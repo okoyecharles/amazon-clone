@@ -4,16 +4,17 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Checkout from "./Checkout";
 import Login from "./Login";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-
 import { auth } from "../config/firebase";
-import { setUser } from "../redux/actions";
 import Payment from "./Payment";
+import Orders from "./Orders";
+import SignUp from "./SignUp";
 
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import Orders from "./Orders";
-import SignUp from "./SignUp";
+
+import { useDispatch, useSelector } from "react-redux";
+import { clearOrders, clearProfile, setProfile, updateOrders } from "../redux/features/user/userSlice";
+import getStorageKey from "../data/storageKey";
 
 const promise = loadStripe(
   "pk_test_51LKikxJIr5sMtV8TVVCP3FSBVbFYb87a2Al30jAkasBgTDe61U02aRDd5ZJKT68wknB9Woa8ZNReOfSBs1Q3Ip6g00TdXWcbbN"
@@ -21,6 +22,7 @@ const promise = loadStripe(
 
 function App() {
   const dispatch = useDispatch();
+  const { profile } = useSelector((state) => state.user);
 
   // Detect size of screen
   const [mediaWidth, setMediaWidth] = useState(null);
@@ -33,13 +35,25 @@ function App() {
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         // The user logged in / was logged in
-        dispatch(setUser(authUser));
+        const { uid, email } = authUser;
+        dispatch(setProfile({ uid, email }));
       } else {
         // The user logged out
-        dispatch(setUser(null));
+        dispatch(clearProfile());
+        dispatch(clearOrders());
       }
     });
-  });
+  }, []);
+
+  // Update redux orders when profile changes
+  useEffect(() => {
+    const LOCAL_STORAGE_KEY = getStorageKey(profile?.uid);
+    const currentProfileOrders = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (profile && currentProfileOrders?.orders) {
+      dispatch(updateOrders(currentProfileOrders.orders));
+    }
+  }, [profile]);  
+
   return (
     <Router>
       <div className="App">

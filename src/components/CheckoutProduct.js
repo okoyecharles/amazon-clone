@@ -3,13 +3,12 @@ import "../styles/CheckoutProduct.css";
 import * as utils from "../logic/utils";
 import { useDispatch } from "react-redux";
 import Star from "./Star";
-import { removeFromCart } from "../redux/actions";
+import { removeItem } from "../redux/features/cart/cartSlice";
 
-function CheckoutProduct({ cartId, image, title, price, rating }) {
+function CheckoutProduct({ index, image, title, price, rating }) {
   const dispatch = useDispatch();
-
-  const handleRemoveClick = () => {
-    dispatch(removeFromCart(cartId));
+  const handleRemoveItem = () => {
+    dispatch(removeItem(index));
   }
 
   return (
@@ -39,7 +38,7 @@ function CheckoutProduct({ cartId, image, title, price, rating }) {
         </div>
 
         <div className="checkout__productButtons">
-          <button type="button" onClick={handleRemoveClick}>Delete</button>
+          <button type="button" onClick={handleRemoveItem}>Delete</button>
           <button type="button">Save for later</button>
         </div>
       </div>

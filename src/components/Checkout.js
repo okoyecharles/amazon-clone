@@ -4,13 +4,13 @@ import Ad from "../images/Developer-Ad.png";
 import Subtotal from "./Subtotal";
 import { useSelector, useDispatch } from "react-redux";
 import CheckoutProduct from "./CheckoutProduct";
-import { emptyCart } from "../redux/actions";
+import { emptyCart } from "../redux/features/cart/cartSlice";
 
 function Checkout() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
-  const handleDeselectClick = () => {
+  const handleEmptyCart = () => {
     dispatch(emptyCart());
   };
 
@@ -22,29 +22,26 @@ function Checkout() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img
-            src={Ad}
-            alt="Are you looking for a Developer"
-            className="checkout__ad"
-          />
+          <img src={Ad} alt="Are you looking for a Developer" className="checkout__ad" />
         </a>
 
         <div className="checkout__header">
           <h2 className="checkout__title">Shopping Cart</h2>
-          <button onClick={handleDeselectClick}>Deselect all items</button>
+          <button onClick={handleEmptyCart}>Deselect all items</button>
         </div>
 
         <div className="checkout__products">
-          {cart?.map((item, index) => 
+          {cart?.map((item, index) => (
             <CheckoutProduct
               id={item.id}
-              cartId={index}
+              key={index}
+              index={index}
               title={item.title}
               image={item.image}
               price={item.price}
               rating={item.rating}
             />
-          )}
+          ))}
         </div>
       </div>
 

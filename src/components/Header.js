@@ -13,7 +13,7 @@ import { auth } from "../config/firebase";
 
 function Header({ mediaWidth }) {
   const cart = useSelector((state) => state.cart);
-  const user = useSelector((state) => state.user);
+  const { profile } = useSelector((state) => state.user);
 
   const navigate = useNavigate();
 
@@ -21,8 +21,8 @@ function Header({ mediaWidth }) {
 
   const handleAuthentication = () => {
     setMobileNav((prevState) => !prevState);
-    if (mediaWidth <= 840) !user && navigate("/login");
-    if (user) auth.signOut();
+    if (mediaWidth <= 840) !profile && navigate("/login");
+    if (profile) auth.signOut();
   };
 
   const getUserName = (email) => email.split("@")[0];
@@ -65,13 +65,13 @@ function Header({ mediaWidth }) {
           )}
 
           {mediaWidth > 840 && (
-            <Link to={!user && "/login"}>
+            <Link to={!profile && "/login"}>
               <div className="header__option" onClick={handleAuthentication}>
                 <span className="header__optionOne">
-                  Hello, {user ? getUserName(user.email) : "Guest"}
+                  Hello, {profile ? getUserName(profile.email) : "Guest"}
                 </span>
                 <span className="header__optionTwo">
-                  {user ? "Sign Out" : "Sign In"}
+                  {profile ? "Sign Out" : "Sign In"}
                 </span>
               </div>
             </Link>
@@ -87,10 +87,10 @@ function Header({ mediaWidth }) {
           )}
 
           {mediaWidth <= 840 && (
-            <div className="header__mobileUser" onClick={() => !user && navigate('/login')}>
+            <div className="header__mobileUser" onClick={() => !profile && navigate('/login')}>
               <MdPersonOutline className="header__mobileUserIcon" />
               <span className="header__mobileUserName">
-                {user ? getUserName(user.email) : "Guest"}
+                {profile ? getUserName(profile.email) : "Guest"}
               </span>
             </div>
           )}
@@ -135,7 +135,7 @@ function Header({ mediaWidth }) {
           >
             <div className="header__mobileNavHeader">
               <div className="header__mobileNavUser">
-                <span>{user ? user.email : "Guest"}</span>
+                <span>{profile ? profile.email : "Guest"}</span>
                 <MdPersonOutline />
               </div>
               <p>
@@ -169,10 +169,10 @@ function Header({ mediaWidth }) {
                 onClick={handleAuthentication}
               >
                 <span className="header__optionOne">
-                  Hello, {user ? getUserName(user.email) : "Guest"}
+                  Hello, {profile ? getUserName(profile.email) : "Guest"}
                 </span>
                 <span className="header__optionTwo">
-                  {user ? "Sign Out" : "Sign In"}
+                  {profile ? "Sign Out" : "Sign In"}
                 </span>
               </li>
             </ul>

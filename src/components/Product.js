@@ -3,20 +3,19 @@ import "../styles/Product.css";
 import * as utils from "../logic/utils";
 import Star from "./Star";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/actions";
+import { addItem } from "../redux/features/cart/cartSlice";
 
 function Product({ id, image, title, price, rating }) {
   const dispatch = useDispatch(); 
 
   const handleAddClick = () => {
-    const item = {
+    dispatch(addItem({
       id,
       title,
       image,
       price,
       rating,
-    };
-    dispatch(addToCart(item));
+    }));
   };
 
   return (
