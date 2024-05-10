@@ -56,7 +56,9 @@ picture {
 
 footer {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 0.5ch;
   justify-content: center;
   background: rgb(19,25,33);
   font-weight: 300;
@@ -66,7 +68,6 @@ footer {
 
 footer a {
   color: #ffa41c;
-  padding-left: 1ch;
   text-decoration: none;
 }
 
