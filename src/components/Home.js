@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import background from "../images/home-bg.jpg";
-import background2 from "../images/home-bg-2.jpg";
 import "../styles/Home.css";
 import Product from "./Product";
 import { useSelector } from "react-redux";
@@ -28,13 +26,22 @@ function Home({ mediaWidth }) {
     <div className="home">
       <div className="home__container">
         <img
-          src={mediaWidth > 840 ? background : background2}
+          src={"/assets/background/home.png"}
           alt="home-background"
-          className="home__image"
+          className="home__image mobile-hidden"
+          width="1200"
+          height="480"
+        />
+        <img
+          src={"/assets/background/home-mobile.png"}
+          alt="home-background"
+          className="home__image desktop-hidden"
+          width="840"
+          height="336"
         />
 
         {productsData.map((productRow, index) => (
-          <div className="home__row" key={index}>
+          <div className={index === 0 ? "home__row first" : "home__row"} key={index}>
             {productRow.map((product) => (
               <Product
                 key={product.id}

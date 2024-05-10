@@ -40,7 +40,7 @@ function SignUp() {
     <div className="login">
       <div className={mounted ? "login__wrapper active" : "login__wrapper"}>
         <Link to="/">
-          <img src={logo} alt="amazon" className="login__logo" />
+          <img src={logo} alt="amazon" className="login__logo" width={335} height={128} />
         </Link>
 
         <div className="login__container">

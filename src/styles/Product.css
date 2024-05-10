@@ -11,13 +11,17 @@
   z-index: 1;
 }
 
-.product__img {
+.product__img-container {
   width: 100%;
+  max-height: 200px;
   background: rgb(248,248,248);
-  padding: .5em;
-  z-index: inherit;
   display: flex;
   justify-content: center;
+}
+
+.product__img {
+ height: auto;
+ width: auto;
 }
 
 .product__info {
@@ -29,10 +33,7 @@
   font-size: 1.15em;
 }
 
-.product__img > img {
-  max-height: 200px;
-  object-fit: contain;
-}
+
 
 .product__price {
   display: flex;
@@ -86,7 +87,6 @@
   }
 
   .product__img {
-    height: 10em;
   }
 
   .product > button:hover {

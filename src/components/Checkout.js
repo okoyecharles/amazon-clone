@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/Checkout.css";
-import Ad from "../images/Developer-Ad.png";
 import Subtotal from "./Subtotal";
 import { useSelector, useDispatch } from "react-redux";
 import CheckoutProduct from "./CheckoutProduct";
@@ -22,7 +21,7 @@ function Checkout() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={Ad} alt="Are you looking for a Developer" className="checkout__ad" />
+          <img src={"/assets/background/cart-ad.png"} alt="Developer Ad" className="checkout__ad" width={1035} height={128} />
         </a>
 
         <div className="checkout__header">

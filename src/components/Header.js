@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import "../styles/Header.css";
-import logo from "../images/amazon-logo.png";
-import AmericaFlag from "../images/america-flag.png";
-import shoppingCart from "../images/cart.png";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { MdPersonOutline } from "react-icons/md";
@@ -39,19 +36,17 @@ function Header({ mediaWidth }) {
         )}
 
         {/* Logo */}
-        <Link to="/">
-          <img src={logo} alt="amazon" className="header__logo" />
+        <Link to="/" className="header__logo-link">
+          <img src={'/assets/icons/logo.png'} alt="amazon" className="header__logo" width={99} height={40} />
         </Link>
 
         {/* Search */}
-        {mediaWidth > 840 && (
-          <div className="header__search">
-            <input type="text" className="header__searchInput" />
-            <div className="header__searchIcon">
-              <AiOutlineSearch />
-            </div>
+        <div className="header__search mobile-hidden">
+          <input type="text" className="header__searchInput" />
+          <div className="header__searchIcon">
+            <AiOutlineSearch />
           </div>
-        )}
+        </div>
 
         {/* Navigation */}
         <nav className="header__nav">
@@ -59,7 +54,7 @@ function Header({ mediaWidth }) {
             <div className="header__option">
               <span className="header__optionOne">English</span>
               <span className="header__optionTwo header__optionImg">
-                <img src={AmericaFlag} alt="English" />
+                <img src={'/assets/icons/america-flag.png'} alt="English" width={25} height={16} />
               </span>
             </div>
           )}
@@ -100,9 +95,11 @@ function Header({ mediaWidth }) {
               <div>
                 <div className="header__optionBasketCount">{cart.length}</div>
                 <img
-                  src={shoppingCart}
+                  src={"/assets/icons/cart.png"}
                   alt="shopping cart"
                   className="header__basket"
+                  width={40}
+                  height={40}
                 />
               </div>
               {mediaWidth > 840 && <span>Cart</span>}
@@ -149,7 +146,7 @@ function Header({ mediaWidth }) {
               <li className="header__option header__mobileNavItem">
                 <span className="header__optionOne">English</span>
                 <span className="header__optionTwo header__optionImg">
-                  <img src={AmericaFlag} alt="" />
+                  <img src={'/assets/icons/america-flag.png'} alt="English" width={40} height={25} />
                 </span>
               </li>
 

@@ -20,8 +20,8 @@ function Product({ id, image, title, price, rating }) {
 
   return (
     <div className="product">
-      <div className="product__img">
-        <img src={image} alt=''/>
+      <div className="product__img-container">
+        <img className="product__img" src={image} alt={title} width={256} height={256} />
       </div>
       <div className="product__info">
         <p className="product__title">{title}</p>
