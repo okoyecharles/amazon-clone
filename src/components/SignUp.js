@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Login.css";
-import logo from "../images/amazon-logo-dark.png";
 import { Link, useNavigate } from "react-router-dom";
 
 import { auth } from "../config/firebase";
@@ -40,7 +39,7 @@ function SignUp() {
     <div className="login">
       <div className={mounted ? "login__wrapper active" : "login__wrapper"}>
         <Link to="/">
-          <img src={logo} alt="amazon" className="login__logo" width={335} height={128} />
+          <img src={'/assets/icons/logo-dark.png'} alt="amazon" className="login__logo" width={136} height={54} />
         </Link>
 
         <div className="login__container">
