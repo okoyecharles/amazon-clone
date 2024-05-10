@@ -3,7 +3,7 @@ import Home from "./home/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Checkout from "./checkout/Checkout";
 import Login from "./auth/Login";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { auth } from "../config/firebase";
 import Payment from "./payment/Payment";
 import Orders from "./orders/Orders";

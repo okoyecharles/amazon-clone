@@ -4,6 +4,7 @@ import * as utils from "../../logic/utils";
 import { useDispatch } from "react-redux";
 import Star from "../home/Star";
 import { removeItem } from "../../redux/features/cart/cartSlice";
+import socials from "../../data/socials";
 
 function CheckoutProduct({ index, image, title, price, rating }) {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ function CheckoutProduct({ index, image, title, price, rating }) {
         <div className="checkout__productGift">
           <input type="checkbox" name="gift" />
           <span>This is a gift</span>
-          <a href="https://github.com/OkoyeCharles" target="_blank" rel="noreferrer">
+          <a href={socials.github} target="_blank" rel="noreferrer">
             Learn More
           </a>
         </div>

@@ -1,4 +1,3 @@
-import productImages from "../"
 // an array (products) of arrays (product rows)
 const productsData = [
   [

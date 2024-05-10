@@ -4,6 +4,7 @@ import Subtotal from "./Subtotal";
 import { useSelector, useDispatch } from "react-redux";
 import CheckoutProduct from "./CheckoutProduct";
 import { emptyCart } from "../../redux/features/cart/cartSlice";
+import socials from "../../data/socials";
 
 function Checkout() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function Checkout() {
     <div className="checkout">
       <div className="checkout__left">
         <a
-          href="http://www.linkedin.com/in/charles-k-okoye/"
+          href={socials.github}
           target="_blank"
           rel="noopener noreferrer"
         >

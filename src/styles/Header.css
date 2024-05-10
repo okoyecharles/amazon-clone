@@ -16,8 +16,9 @@
 
 .header__toggleOpen {
   color: white;
-  font-size: 2.25em;
-  margin-right: .25em;
+  font-size: 2.25rem;
+  margin-right: .5rem;
+  display: grid;
 }
 
 .header__mobileUser {
@@ -47,11 +48,10 @@
 .header__search {
   font-size: 1.25em;
   display: flex;
-  align-items: center;
   flex: 1;
-  border-radius: .25em;
   margin-right: .5em;
-  overflow: hidden;
+
+  --border-radius: .5rem;
 }
 
 .header__searchInput {
@@ -60,12 +60,19 @@
   outline: none;
   font-size: .8em;
   padding: .35em;
+
+  
+  border-start-start-radius: var(--border-radius);
+  border-end-start-radius: var(--border-radius);
 }
 
 .header__searchIcon {
   background: rgb(254,189,104);
   padding: .255em;
   display: flex;
+
+  border-start-end-radius: var(--border-radius);
+  border-end-end-radius: var(--border-radius);
 }
 
 .header__searchIcon > * {
@@ -163,7 +170,7 @@
 .header__toggleClose {
   display: flex;
   justify-content: center;
-  margin-top: 3em;
+  padding-top: 3rem;
   flex: 0.2;
   transform: translateX(100%);
   transition: transform .25s ease-out;

@@ -44,6 +44,7 @@ export const getTotalPrice = (cart) =>
   cart.reduce((totalPrice, item) => (totalPrice += parseFloat(item.price)), 0);
 
 export const getError = (firebaseErr) => {
+  // Firebase error (auth/invalid-credentials) => invalid credentials
   if (firebaseErr.includes("Firebase: Error (auth/")) {
     return firebaseErr
       .replace("Firebase: Error (auth/", "")

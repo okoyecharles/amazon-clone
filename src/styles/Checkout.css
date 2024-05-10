@@ -46,6 +46,10 @@
   font-size: 1.75em;
 }
 
+.checkout__productImg img {
+  height: 100%;
+}
+
 @media screen and (max-width: 840px) {
   .checkout__right {
     position: sticky;

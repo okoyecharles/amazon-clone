@@ -26,14 +26,14 @@ function Home() {
     <div className="home">
       <div className="home__container">
         <img
-          src={"/assets/background/home.png"}
+          src={"/assets/background/home.webp"}
           alt="home-background"
           className="home__image mobile-hidden"
-          width="1200"
-          height="480"
+          width="2000"
+          height="800"
         />
         <img
-          src={"/assets/background/home-mobile.png"}
+          src={"/assets/background/home-mobile.webp"}
           alt="home-background"
           className="home__image desktop-hidden"
           width="840"

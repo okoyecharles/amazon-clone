@@ -29,28 +29,35 @@ function Header() {
       <div className="header__container">
         {/* Menu Toggle Open */}
 
-        <TbMenu2
+        <button
+          aria-label="open menu"
+          aria-controls="mobile-nav"
+          aria-expanded={mobileNav}
           className="header__toggleOpen desktop-hidden"
-          onClick={() => setMobileNav((prevState) => !prevState)}
-        />
+        >
+          <TbMenu2 onClick={() => setMobileNav((prevState) => !prevState)} />
+        </button>
 
         {/* Logo */}
         <Link to="/" className="header__logo-link">
           <img
             src={"/assets/icons/logo.png"}
-            alt="amazon"
+            alt="Logo"
             className="header__logo"
-            width={99}
-            height={40}
+            width={100}
+            height={38}
           />
         </Link>
 
         {/* Search */}
         <div className="header__search mobile-hidden">
-          <input type="text" className="header__searchInput" />
-          <div className="header__searchIcon">
+          <label htmlFor="product-search" className="visually-hidden">
+            Search
+          </label>
+          <input id="product-search" type="text" className="header__searchInput" />
+          <button className="header__searchIcon" aria-label="Search products">
             <AiOutlineSearch />
-          </div>
+          </button>
         </div>
 
         {/* Navigation */}
@@ -81,19 +88,20 @@ function Header() {
           <Link to="/orders" className="mobile-hidden">
             <div className="header__option">
               <span className="header__optionOne">Returns</span>
-              <span className="header__optionTwo">& Orders</span>
+              <p className="header__optionTwo">& Orders</p>
             </div>
           </Link>
 
-          <div
+          <button
             className="header__mobileUser desktop-hidden"
             onClick={() => !profile && navigate("/login")}
+            aria-label={profile ? "Sign Out" : "Sign In"}
           >
             <MdPersonOutline className="header__mobileUserIcon" />
             <span className="header__mobileUserName">
               {profile ? getUserName(profile.email) : "Guest"}
             </span>
-          </div>
+          </button>
 
           <Link to="/checkout">
             <div className="header__optionBasket">
@@ -101,7 +109,7 @@ function Header() {
                 <div className="header__optionBasketCount">{cart.length}</div>
                 <img
                   src={"/assets/icons/cart.png"}
-                  alt="shopping cart"
+                  alt="shopping cart icon"
                   className="header__basket"
                   width={40}
                   height={40}
@@ -114,36 +122,33 @@ function Header() {
       </div>
       <div className="header__mobileContainer desktop-hidden">
         <div className="header__search">
-          <input type="text" className="header__searchInput" />
-          <div className="header__searchIcon">
+          <label htmlFor="product-search-mobile" className="visually-hidden">
+            Search
+          </label>
+          <input type="text" className="header__searchInput" id="product-search-mobile" />
+          <button className="header__searchIcon" aria-label="search products">
             <AiOutlineSearch />
-          </div>
+          </button>
         </div>
       </div>
       <div
-        className={`desktop-hidden ${
-          mobileNav ? "header__mobileNav active" : "header__mobileNav"
-        }`}
+        className={`desktop-hidden header__mobileNav ${mobileNav ? " active" : ""}`}
+        id="mobile-nav"
       >
-        <div
-          className={
-            mobileNav ? "header__mobileNavContainer active" : "header__mobileNavContainer"
-          }
-        >
+        <div className={`header__mobileNavContainer ${mobileNav ? " active" : ""}`}>
           <div className="header__mobileNavHeader">
             <div className="header__mobileNavUser">
               <span>{profile ? profile.email : "Guest"}</span>
               <MdPersonOutline />
             </div>
-            <p>
+            <div>
               <span>Browse</span>
-              <br />
-              Amazon Clone
-            </p>
+              <p>Amazon Clone</p>
+            </div>
           </div>
 
-          <ul className="header__mobileNavItems">
-            <li className="header__option header__mobileNavItem">
+          <div className="header__mobileNavItems">
+            <button className="header__option header__mobileNavItem">
               <span className="header__optionOne">English</span>
               <span className="header__optionTwo header__optionImg">
                 <img
@@ -153,9 +158,9 @@ function Header() {
                   height={25}
                 />
               </span>
-            </li>
+            </button>
 
-            <li
+            <button
               className="header__option header__mobileNavItem"
               onClick={() => {
                 navigate("/orders");
@@ -164,9 +169,9 @@ function Header() {
             >
               <span className="header__optionOne">Returns</span>
               <span className="header__optionTwo">& Orders</span>
-            </li>
+            </button>
 
-            <li
+            <button
               className="header__option header__mobileNavItem"
               onClick={handleAuthentication}
             >
@@ -176,15 +181,16 @@ function Header() {
               <span className="header__optionTwo">
                 {profile ? "Sign Out" : "Sign In"}
               </span>
-            </li>
-          </ul>
+            </button>
+          </div>
         </div>
-        <div
+        <button
           className={mobileNav ? "header__toggleClose active" : "header__toggleClose"}
           onClick={() => setMobileNav((prevState) => !prevState)}
+          aria-label="close menu"
         >
           <CgClose />
-        </div>
+        </button>
       </div>
     </div>
   );

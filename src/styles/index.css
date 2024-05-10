@@ -66,6 +66,12 @@ footer {
   color: #fff;
 }
 
+button {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+}
+
 footer a {
   color: #ffa41c;
   text-decoration: none;
@@ -106,4 +112,21 @@ footer a {
   .desktop-hidden {
     display: none !important;
   }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+
+  outline: 0;
+  outline-offset: 0;
 }

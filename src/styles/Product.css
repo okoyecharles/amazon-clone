@@ -22,6 +22,7 @@
 .product__img {
  height: auto;
  width: auto;
+ object-fit: contain;
 }
 
 .product__info {
@@ -71,7 +72,7 @@
 
 @media screen and (max-width: 840px) {
   .product {
-    font-size: clamp(.55em, 3vw, .75em);
+    font-size: clamp(.75rem, 3vw, 1rem);
     border-radius: .25em;
     overflow: hidden;
     box-shadow: 0 0 .25em rgb(181, 181, 181);

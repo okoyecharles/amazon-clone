@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/Payment.css";
 import CheckoutProduct from "../checkout/CheckoutProduct";
 import * as utils from "../../logic/utils";
@@ -42,17 +42,22 @@ function Payment() {
       })
     );
 
-    requestAnimationFrame(() => {
-      dispatch(emptyCart());
-
-      navigate("/orders", { replace: true });
-    });
+    navigate("/orders", { replace: true });
+    dispatch(emptyCart());
   };
 
   const handleChange = (event) => {
     setDisabled(event.empty);
     setError(event.error ? event.error.message : "");
   };
+
+  useEffect(() => {
+    if (cart.length === 0) {
+      requestAnimationFrame(() => {
+        navigate("/checkout", { replace: true });
+      });
+    }
+  }, [cart]);
 
   return (
     <div className="payment">

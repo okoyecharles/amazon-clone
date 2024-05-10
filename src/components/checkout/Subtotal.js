@@ -37,7 +37,6 @@ function Subtotal() {
           profile ? navigate("/payment") : setError('Please sign in first');
         }}
         className="subtotal__button"
-        type="button"
       >
         Proceed to checkout
       </button>
