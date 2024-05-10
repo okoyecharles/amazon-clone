@@ -24,13 +24,6 @@ function App() {
   const dispatch = useDispatch();
   const { profile } = useSelector((state) => state.user);
 
-  // Detect size of screen
-  const [mediaWidth, setMediaWidth] = useState(null);
-  useEffect(() => setMediaWidth(window.innerWidth), []);
-  window.addEventListener("resize", (event) =>
-    setMediaWidth(event.target.innerWidth)
-  );
-
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
@@ -62,8 +55,8 @@ function App() {
             path="/"
             element={
               <>
-                <Header mediaWidth={mediaWidth}/>
-                <Home mediaWidth={mediaWidth}/>
+                <Header />
+                <Home />
               </>
             }
           />
@@ -71,7 +64,7 @@ function App() {
             path="/orders"
             element={
               <>
-                <Header mediaWidth={mediaWidth}/>
+                <Header />
                 <Orders />
               </>
             }
@@ -82,7 +75,7 @@ function App() {
             path="/checkout"
             element={
               <>
-                <Header mediaWidth={mediaWidth}/>
+                <Header />
                 <Checkout />
               </>
             }
@@ -91,7 +84,7 @@ function App() {
             path="/payment"
             element={
               <>
-                <Header mediaWidth={mediaWidth}/>
+                <Header />
                 <Elements stripe={promise}>
                   <Payment />
                 </Elements>

@@ -94,15 +94,15 @@ footer a {
 
 /* media query classes */
 .mobile-hidden {
-  display: none;
+  display: none !important;
 }
 
 @media screen and (min-width: 840px) {
   .mobile-hidden {
-    display: inherit;
+    display: inherit !important;
   }
 
   .desktop-hidden {
-    display: none;
+    display: none !important;
   }
 }

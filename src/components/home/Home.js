@@ -4,7 +4,7 @@ import Product from "./Product";
 import { useSelector } from "react-redux";
 import productsData from "../../data/products";
 
-function Home({ mediaWidth }) {
+function Home() {
   const cart = useSelector((state) => state.cart);
   const [alert, setAlert] = useState(null);
   const [timeOutID, setTimeOutID] = useState(null);
@@ -55,15 +55,13 @@ function Home({ mediaWidth }) {
           </div>
         ))}
       </div>
-      {mediaWidth > 840 && (
-        <div
-          className={
-            alert === "Item added to cart" ? "home__alert active" : "home__alert"
-          }
-        >
-          {alert}
-        </div>
-      )}
+      <div
+        className={`mobile-hidden ${
+          alert === "Item added to cart" ? "home__alert active" : "home__alert"
+        }`}
+      >
+        {alert}
+      </div>
     </div>
   );
 }
