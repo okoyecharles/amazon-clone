@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "../styles/Home.css";
+import "../../styles/Home.css";
 import Product from "./Product";
 import { useSelector } from "react-redux";
-import productsData from "../data/products";
+import productsData from "../../data/products";
 
 function Home({ mediaWidth }) {
   const cart = useSelector((state) => state.cart);

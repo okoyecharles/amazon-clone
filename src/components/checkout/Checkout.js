@@ -1,9 +1,9 @@
 import React from "react";
-import "../styles/Checkout.css";
+import "../../styles/Checkout.css";
 import Subtotal from "./Subtotal";
 import { useSelector, useDispatch } from "react-redux";
 import CheckoutProduct from "./CheckoutProduct";
-import { emptyCart } from "../redux/features/cart/cartSlice";
+import { emptyCart } from "../../redux/features/cart/cartSlice";
 
 function Checkout() {
   const dispatch = useDispatch();

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import "../styles/Orders.css";
-import { useDispatch, useSelector } from "react-redux";
+import "../../styles/Orders.css";
+import { useSelector } from "react-redux";
 import Order from "./Order";
-import getStorageKey from "../data/storageKey";
+import getStorageKey from "../../data/storageKey";
 
 function Orders() {
   const { profile, orders } = useSelector((state) => state.user);

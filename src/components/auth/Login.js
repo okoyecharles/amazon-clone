@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "../styles/Login.css";
+import "../../styles/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 
-import { auth } from "../config/firebase";
+import { auth } from "../../config/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { getError } from "../logic/utils";
+import { getError } from "../../logic/utils";
 
 function Login() {
   const navigate = useNavigate();

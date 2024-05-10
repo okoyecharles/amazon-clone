@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import "../styles/Payment.css";
-import CheckoutProduct from "./CheckoutProduct";
-import * as utils from "../logic/utils";
+import "../../styles/Payment.css";
+import CheckoutProduct from "../checkout/CheckoutProduct";
+import * as utils from "../../logic/utils";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { CardElement } from "@stripe/react-stripe-js";
 import { v4 } from "uuid";
 import moment from "moment";
-import { emptyCart } from "../redux/features/cart/cartSlice";
-import { addOrder } from "../redux/features/user/userSlice";
+import { emptyCart } from "../../redux/features/cart/cartSlice";
+import { addOrder } from "../../redux/features/user/userSlice";
 
 function Payment() {
   const navigate = useNavigate();

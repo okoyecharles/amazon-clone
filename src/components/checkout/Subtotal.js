@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "../styles/Subtotal.css";
-import * as utils from "../logic/utils";
+import "../../styles/Subtotal.css";
+import * as utils from "../../logic/utils";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

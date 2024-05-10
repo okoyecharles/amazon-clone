@@ -1,6 +1,6 @@
 import React from "react";
-import "../styles/Order.css";
-import CheckoutProduct from "./CheckoutProduct";
+import "../../styles/Order.css";
+import CheckoutProduct from "../checkout/CheckoutProduct";
 
 function Order({ order }) {
   return (

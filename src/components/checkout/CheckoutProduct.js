@@ -1,9 +1,9 @@
 import React from "react";
-import "../styles/CheckoutProduct.css";
-import * as utils from "../logic/utils";
+import "../../styles/CheckoutProduct.css";
+import * as utils from "../../logic/utils";
 import { useDispatch } from "react-redux";
-import Star from "./Star";
-import { removeItem } from "../redux/features/cart/cartSlice";
+import Star from "../home/Star";
+import { removeItem } from "../../redux/features/cart/cartSlice";
 
 function CheckoutProduct({ index, image, title, price, rating }) {
   const dispatch = useDispatch();
