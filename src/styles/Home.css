@@ -5,7 +5,11 @@
 
 .home__container {
   margin-inline: auto;
-  max-width: 120em;
+  max-width: 1600px;
+}
+
+.home__row.first {
+  margin-top: -15rem;
 }
 
 .home__row {
@@ -21,9 +25,10 @@
 
 .home__image {
   width: 100%;
+  height: auto;
   z-index: -1;
-  margin-bottom: -15em;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), 75%, rgba(0, 0, 0, 0));
+  user-select: none;
+  pointer-events: none;
 }
 
 .home__alert {
@@ -55,8 +60,9 @@
     flex-direction: column;
     width: 100%;
   }
-  .home__image {
-    margin-bottom: -6em;
+
+  .home__row.first {
+    margin-top: -6rem;
   }
 
   .home__row {
@@ -69,7 +75,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .home__image {
-    margin-bottom: -3.5em;
+  .home__row.first {
+    margin-top: -3.5rem;
   }
 }

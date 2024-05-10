@@ -67,6 +67,10 @@
   border-right: .05em solid gray;
 }
 
+.checkout__ad {
+  height: auto;
+}
+
 @media screen and (max-width: 840px) {
   .checkout__product {
     font-size: .8em;

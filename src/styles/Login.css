@@ -27,9 +27,7 @@
 }
 
 .login__logo {
-  object-fit: contain;
-  height: 4.75em;
-  margin: 0;
+  margin: 2rem 0;
 }
 
 .login__container {

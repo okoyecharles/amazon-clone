@@ -56,7 +56,9 @@ picture {
 
 footer {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 0.5ch;
   justify-content: center;
   background: rgb(19,25,33);
   font-weight: 300;
@@ -64,9 +66,14 @@ footer {
   color: #fff;
 }
 
+button {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+}
+
 footer a {
   color: #ffa41c;
-  padding-left: 1ch;
   text-decoration: none;
 }
 
@@ -90,4 +97,36 @@ footer a {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* media query classes */
+.mobile-hidden {
+  display: none !important;
+}
+
+@media screen and (min-width: 840px) {
+  .mobile-hidden {
+    display: inherit !important;
+  }
+
+  .desktop-hidden {
+    display: none !important;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+
+  outline: 0;
+  outline-offset: 0;
 }
